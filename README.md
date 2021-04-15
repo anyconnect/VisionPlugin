@@ -1,11 +1,11 @@
 # VisionPluginLibrary
-This plugin enables third-party customize inferencing using their own AI SDK.
+This plugin enables edge inferencing using a third-party AI SDK.
 
 # Procedure
 
 1. Complete the stub functions in Vision.cpp and update the CMakeLists.txt with the linked libs.
 2. Compile your libacvisionplugin.so using the build.sh script.
-3. Pack your libacvisionplugin.so with the AI model and compress the package(.tar).
+3. Pack your libacvisionplugin.so with the AI model and compress the package (.tar).
 4. Upload the compressed AI model package to the AnyConnect Dashboard and create an AI model entry.
 5. Create an AI Container using the AI model entry and deploy it to the Smarter AI devices.
 
