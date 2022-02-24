@@ -1,3 +1,12 @@
+///
+/// \file VisionPlugin.h
+///
+/// Vision plugin header file
+///
+/// Copyright © 2022
+/// Smarter AI International Private Limited. All rights reserved.
+///
+
 #ifndef _VISION_PLUGIN_
 #define _VISION_PLUGIN_
 
@@ -14,7 +23,7 @@ namespace visionplugin {
 ///
 /// Supported media types: audio, video, sensor.
 ///
-enum class MediaType { 
+enum class MediaType {
   AUDIO,
   VIDEO,
   SENSOR
@@ -23,7 +32,7 @@ enum class MediaType {
 
 ///
 /// \brief media information.
-/// 
+///
 struct MediaInfo {
   ///
   /// Width of the video
@@ -36,7 +45,7 @@ struct MediaInfo {
   ///
   /// Maximum video frame per second.
   ///
-  int videoFps; 
+  int videoFps;
   ///
   /// Maximum bitrate.
   ///
@@ -68,8 +77,11 @@ struct InferenceResult {
   int ymin;
   int xmax;
   int ymax;
-  /// Accuracy 
+  /// Accuracy between 1 and 100
+  /// Also can contain durations, distance, angles etc value
   double confidence;
+  /// Unit of confidence or other value sent over the field confidence
+  std::string unit;
   /// Inference result summary
   std::string summary;
   /// Detail result in JSON format if any.
@@ -107,7 +119,7 @@ public:
     ///
     /// \return true on successful initialization,
     ///  otherwise false.
-    /// 
+    ///
     virtual bool initPlugin() = 0;
 
     ///
@@ -119,8 +131,9 @@ public:
     /// \brief Set networks model filepath
     ///
     /// \param[in] filePath - model file path.
+    /// \param[in] modelConfigParams - model config parameters from dashboard in json format
     ///
-    virtual void setNetworkModelsFilePath(std::string filePath) = 0;
+    virtual void setNetworkModelsFilePath(std::string filePath, std::string modelConfigParams = "") = 0;
     ///
     /// \brief Provides decoded media data (frame) to the plugin for analysis.
     ///
@@ -142,13 +155,6 @@ public:
     /// e.x., dataJson = [{"mediaType": "gyroscope", "source": "gyro_1", "x":20, "y":35, "z":10}]
     ///
     virtual void feedSensoryApparatusData(u_int64_t timestamp, std::string dataJson) = 0;
-
-    ///
-    /// \brief Set a callback for receiving inference results from the plugin.
-    ///
-    /// \param[in] onInferenceResultReceived - Handler function for the inference result.
-    ///
-    ///virtual void setInferenceResultCallback(onInferenceResultReceived handler) = 0;
 
 };
 
