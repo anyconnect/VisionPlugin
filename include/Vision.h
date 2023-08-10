@@ -21,9 +21,14 @@ public:
 
   void deInitPlugin();
   
-  void setNetworkModelsFilePath(std::string filePath);
+  void setNetworkModelsFilePath(std::string filePath, std::string modelConfigParams = "");
 
-  std::vector<com::anyconnect::visionplugin::InferenceResult> feedMediaData(com::anyconnect::visionplugin::MediaType mediaType, std::string source, u_int64_t timestamp, MediaInfo mediaInfo, unsigned char* data, int len);
+  std::vector<com::anyconnect::visionplugin::InferenceResult> feedMediaData(com::anyconnect::visionplugin::MediaType mediaType, 
+															std::string source, 
+															u_int64_t timestamp,
+															MediaInfo mediaInfo,
+															unsigned char* data,
+															int len);
 
   void feedSensoryApparatusData(u_int64_t timestamp, std::string dataJson);
 
