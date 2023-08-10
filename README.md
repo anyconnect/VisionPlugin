@@ -15,6 +15,7 @@ This plugin enables edge inferencing using a third-party AI SDK.
 - README		Instructions to complete the Vision.cpp stub functions and compile and use libacvisionplugin.so.
 - Vision.h		Vision library header file.  This derived class overrides VisionPlugin base class member functions.
 - Vision.cpp		Vision library source file.  You must complete the stub functions.
+- VisionPluginTypes.h The data types class for the vision objects.
 - VisionPlugin.h	These base class member functions are overridden by Vision derived class.
 - CMakeLists.txt		Compiles libacvisionplugin.so.
 - build.sh       Script to build all.
