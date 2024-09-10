@@ -1,5 +1,5 @@
 CPP=g++
-CPPFLAGS=-I. -std=c++11 -ldl -pthread
+CPPFLAGS=-I. -std=c++17 -ldl -pthread
 DEPS = Test.h VisionPlugin.h
 OBJ = Test.o
 
